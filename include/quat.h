@@ -1,28 +1,30 @@
 #pragma once
 #include "vec3.h"
 
-/*
-    Quaternion
-*/
-class Quat {
+namespace gesu {
+    /*
+        Quaternion
+    */
+    class Quat {
 
-    public:
+        public:
 
-        Quat();
-        Quat(float _w, float _x, float _y, float _z);
+            Quat();
+            Quat(float _w, float _x, float _y, float _z);
 
-        //static construction functions
-        static Quat from_euler(Vec3 euler_values);
+            //static construction functions
+            static Quat from_euler(Vec3 euler_values);
 
-        //instance functions
-        Vec3 to_euler();
+            //instance functions
+            Vec3 to_euler();
 
-        //variables
-        float w;
-        float x;
-        float y;
-        float z;
+            //variables
+            float w;
+            float x;
+            float y;
+            float z;
 
-    private:
+        private:
 
-};
+    };
+}
