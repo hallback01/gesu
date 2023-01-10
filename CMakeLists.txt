@@ -8,7 +8,7 @@ project(gesu CXX)
 set(CMAKE_CXX_STANDARD 17)
 
 #add include directory
-include_directories(${CMAKE_SOURCE_DIR}/include/)
+include_directories(${PROJECT_SOURCE_DIR}/include/)
 
 # add source files
 file(GLOB_RECURSE src_files "src/*.cpp")
