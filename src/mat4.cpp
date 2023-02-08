@@ -2,7 +2,7 @@
 #include <cmath>
 #include "mat4.h"
 #include "misc.h"
-
+#include <iostream>
 namespace gesu {
     Mat4::Mat4() {
         for(int y = 0; y < 4; y++) {
@@ -46,7 +46,6 @@ namespace gesu {
 
     Mat4 Mat4::trs(Vec3 translation, Quat rotation, Vec3 scale) {
 
-
         Mat4 translation_rotation_matrix;
         Mat4 scale_matrix;
         
@@ -87,13 +86,13 @@ namespace gesu {
 
         Mat4 view_matrix;
         view_matrix[0][0] = ns.x;
-        view_matrix[1][0] = ns.y;
-        view_matrix[2][0] = ns.z;
         view_matrix[0][1] = nu.x;
-        view_matrix[1][1] = nu.y;
-        view_matrix[2][1] = nu.z;
         view_matrix[0][2] = -nf.x;
+        view_matrix[1][0] = ns.y;
+        view_matrix[1][1] = nu.y;
         view_matrix[1][2] = -nf.y;
+        view_matrix[2][0] = ns.z;
+        view_matrix[2][1] = nu.z;
         view_matrix[2][2] = -nf.z;
         view_matrix[3][0] = -(ns * position);
         view_matrix[3][1] = -(nu * position);
@@ -106,8 +105,8 @@ namespace gesu {
     }
 
     Mat4 Mat4::look_at(Vec3 position, Vec3 look_position, Vec3 up) {
-        Vec3 direction = look_position - position;
-        return Mat4::look_towards(position, Quat::from_euler(direction.normalized()), up);
+        Vec3 direction = (look_position - position).normalized();
+        return Mat4::look_towards(position, direction, up);
     }
 
     Mat4 Mat4::perspective(float fov, float aspect_ratio, float znear, float zfar) {
@@ -119,12 +118,12 @@ namespace gesu {
         float bottom = -top;
 
         Mat4 perspective;
-        perspective[0][0] = (2.0 * znear) / (right - left);
+        perspective[0][0] = 2.0 / (right - left);
         perspective[0][1] = 0.0;
         perspective[0][2] = 0.0;
         perspective[0][3] = 0.0;
         perspective[1][0] = 0.0;
-        perspective[1][1] = (2.0 * znear) / (top - bottom);
+        perspective[1][1] = 2.0 / (top - bottom);
         perspective[1][2] = 0.0;
         perspective[1][3] = 0.0;
         perspective[2][0] = (right + left) / (right - left);
