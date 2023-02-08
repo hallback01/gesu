@@ -112,7 +112,7 @@ namespace gesu {
 
     Mat4 Mat4::perspective(float fov, float aspect_ratio, float znear, float zfar) {
 
-        float scale = std::tan(fov * 0.5 * (Misc::PI / 180.0));
+        float scale = std::tan(fov * 0.5);
         float right = aspect_ratio * scale;
         float left = -right;
         float top = scale;
