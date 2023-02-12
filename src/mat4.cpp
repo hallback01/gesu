@@ -50,7 +50,7 @@ namespace gesu {
         Vec4 cl3(m_values[2][0], m_values[2][1], m_values[2][2], m_values[2][3]);
         Vec4 cl4(m_values[3][0], m_values[3][1], m_values[3][2], m_values[3][3]);
 
-        return Vec4(cl1 * a, cl2 * a, cl3 * a, cl4 * a);
+        return Vec4(cl1 * other, cl2 * other, cl3 * other, cl4 * other);
     }
 
     Mat4 Mat4::trs(Vec3 translation, Quat rotation, Vec3 scale) {
