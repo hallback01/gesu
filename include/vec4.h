@@ -19,6 +19,7 @@ namespace gesu {
                 Dot product
             */
             float operator*(Vec4& other);
+            Vec4& operator*(float other);
 
             //instance functions
             float length();

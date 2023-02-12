@@ -31,6 +31,14 @@ namespace gesu {
         return x*other.x + y*other.y + z*other.z + w*other.w;
     }
 
+    Vec4& Vec4::operator*(float other) {
+        this->x *= other;
+        this->y *= other;
+        this->z *= other;
+        this->w *= other;
+        return *this;
+    }
+
     float Vec4::length() {
         return sqrt(std::pow(x, 2) + std::pow(y, 2) + std::pow(z, 2) + std::pow(w, 2));
     }

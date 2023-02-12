@@ -41,7 +41,7 @@ namespace gesu {
         return *this;
     }
 
-    Vec3&Vec3:: operator*(float other) {
+    Vec3& Vec3::operator*(float other) {
         this->x *= other;
         this->y *= other;
         this->z *= other;
