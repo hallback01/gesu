@@ -18,6 +18,7 @@ namespace gesu {
             float* operator[](size_t i); 
             Mat4 operator*(Mat4& other);
             Mat4 operator*(float other);
+            Vec4 operator*(Vec4 other);
 
             //static construction functions
             static Mat4 trs(Vec3 translation, Quat rotation, Vec3 scale);

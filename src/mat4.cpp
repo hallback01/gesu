@@ -44,6 +44,15 @@ namespace gesu {
         return multiplied;
     }
 
+    Vec4 Mat4::operator*(Vec4 other) {
+        Vec4 cl1(m_values[0][0], m_values[0][1], m_values[0][2], m_values[0][3]);
+        Vec4 cl2(m_values[1][0], m_values[1][1], m_values[1][2], m_values[1][3]);
+        Vec4 cl3(m_values[2][0], m_values[2][1], m_values[2][2], m_values[2][3]);
+        Vec4 cl4(m_values[3][0], m_values[3][1], m_values[3][2], m_values[3][3]);
+
+        return Vec4(cl1 * a, cl2 * a, cl3 * a, cl4 * a);
+    }
+
     Mat4 Mat4::trs(Vec3 translation, Quat rotation, Vec3 scale) {
 
 
