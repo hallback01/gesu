@@ -45,10 +45,10 @@ namespace gesu {
     }
 
     Vec4 Mat4::operator*(Vec4 other) {
-        Vec4 cl1(m_values[0][0], m_values[0][1], m_values[0][2], m_values[0][3]);
-        Vec4 cl2(m_values[1][0], m_values[1][1], m_values[1][2], m_values[1][3]);
-        Vec4 cl3(m_values[2][0], m_values[2][1], m_values[2][2], m_values[2][3]);
-        Vec4 cl4(m_values[3][0], m_values[3][1], m_values[3][2], m_values[3][3]);
+        Vec4 cl1(m_values[0][0], m_values[1][0], m_values[2][0], m_values[3][0]);
+        Vec4 cl2(m_values[0][1], m_values[1][1], m_values[2][1], m_values[3][1]);
+        Vec4 cl3(m_values[0][2], m_values[1][2], m_values[2][2], m_values[3][2]);
+        Vec4 cl4(m_values[0][3], m_values[1][3], m_values[2][3], m_values[3][3]);
 
         return Vec4(cl1 * other, cl2 * other, cl3 * other, cl4 * other);
     }
@@ -120,19 +120,19 @@ namespace gesu {
 
     Mat4 Mat4::perspective(float fov, float aspect_ratio, float znear, float zfar) {
 
-        float scale = std::tan(fov * 0.5);
+        float scale = std::tan(fov * 0.5) * znear;
         float right = aspect_ratio * scale;
         float left = -right;
         float top = scale;
         float bottom = -top;
 
         Mat4 perspective;
-        perspective[0][0] = 2.0 / (right - left);
+        perspective[0][0] = (2.0 * znear) / (right - left);
         perspective[0][1] = 0.0;
         perspective[0][2] = 0.0;
         perspective[0][3] = 0.0;
         perspective[1][0] = 0.0;
-        perspective[1][1] = 2.0 / (top - bottom);
+        perspective[1][1] = (2.0 * znear) / (top - bottom);
         perspective[1][2] = 0.0;
         perspective[1][3] = 0.0;
         perspective[2][0] = (right + left) / (right - left);
