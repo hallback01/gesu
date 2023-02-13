@@ -38,7 +38,7 @@ namespace gesu {
         Mat4 multiplied;
         for(size_t y = 0; y < 4; y++) {
             for(size_t x = 0; x < 4; x++) {
-                multiplied[x][y] *= rhs;
+                multiplied[x][y] = m_values[x][y] * rhs;
             }
         }
         return multiplied;
