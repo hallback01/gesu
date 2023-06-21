@@ -17,11 +17,15 @@ namespace gesu {
         y = _y;
     }
 
-    Vec2 Vec2::operator-(Vec2& other) {
+    Vec2 Vec2::operator-(const Vec2& other) {
         return {x - other.x, y - other.y};
     }
 
-    float Vec2::operator*(Vec2& other) {
+    Vec2 Vec2::operator+(const Vec2& other) {
+        return {x + other.x, y + other.y};
+    }
+
+    float Vec2::operator*(const Vec2& other) {
         return x*other.x + y*other.y;
     }
 
