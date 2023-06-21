@@ -35,6 +35,10 @@ namespace gesu {
 
     Vec2 Vec2::normalized() {
         float length = this->length();
-        return {x / length, y / length};
+        if(length > 0) {
+            return {x / length, y / length};
+        } else {
+            return {0, 0};
+        }
     }
 }
