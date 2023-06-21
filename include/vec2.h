@@ -13,13 +13,13 @@ namespace gesu {
             Vec2(float _x, float _y);
 
             //operators
-            Vec2 operator-(Vec2& other);
-            Vec2 operator+(Vec2& other);
+            Vec2 operator-(const Vec2& other);
+            Vec2 operator+(const Vec2& other);
 
             /*
                 Dot product
             */
-            float operator*(Vec2& other);
+            float operator*(const Vec2& other);
 
             //instance functions
             float length();
