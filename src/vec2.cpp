@@ -29,6 +29,10 @@ namespace gesu {
         return x*other.x + y*other.y;
     }
 
+    Vec2 Vec2::operator*(float other) {
+        return {x * other, y * other};
+    }
+
     float Vec2::length() {
         return sqrt(std::pow(x, 2) + std::pow(y, 2));
     }
